@@ -1,4 +1,4 @@
-package kb.classmanager;
+package kb.classmanager.model;
 
 public enum Gender {
     MALE,

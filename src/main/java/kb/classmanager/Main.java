@@ -1,5 +1,7 @@
 package kb.classmanager;
 
+import kb.classmanager.view.MainWindow;
+
 import javax.swing.*;
 
 public class Main {
