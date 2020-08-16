@@ -4,7 +4,11 @@
 
 package kb.classmanager.view;
 
+import kb.classmanager.model.Gender;
+import kb.classmanager.model.Student;
+
 import java.awt.*;
+import java.time.LocalDate;
 import javax.swing.*;
 
 /**
@@ -13,6 +17,17 @@ import javax.swing.*;
 public class StudentData extends JPanel {
     public StudentData() {
         initComponents();
+        // Prepare combobox with available options (gender)
+        Gender[] genders = Gender.values();
+        for (Gender gender : genders) {
+            comboBoxGender.addItem(gender);
+        }
+
+        // prepare spinner Year Born                          initial value          minimum value    maximum value           stepsize
+        spinnerYearBorn.setModel(new SpinnerNumberModel(LocalDate.now().getYear(), 1920, LocalDate.now().getYear(), 1));
+        buttonDelete.addActionListener(actionEvent -> {
+
+        });
     }
 
     private void initComponents() {
@@ -107,5 +122,13 @@ public class StudentData extends JPanel {
     private JCheckBox checkBoxQuarantined;
     private JButton buttonSave;
     private JButton buttonDelete;
+
+    public void setData(Student markedStudent) {
+        textFieldName.setText(markedStudent.getName());
+        textFieldLastName.setText(markedStudent.getLastName());
+        // TODO: GENDER
+        spinnerYearBorn.setValue(markedStudent.getYearBorn());
+        checkBoxQuarantined.setSelected(markedStudent.isQuarantined());
+    }
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
